@@ -4,6 +4,7 @@
   <Set name="contextPath">/</Set>
   <Set name="war"><Property name="jetty.webapps" />/root.war
   </Set>
+  <!-- to isolate server and webapp logging libs use below (server and webapp have different config) -->
   <Get name="serverClasspathPattern">
     <Call name="add">
       <Arg>org.slf4j.</Arg>
@@ -15,4 +16,11 @@
       <Arg>org.apache.logging.log4j.</Arg>
     </Call>
   </Get>
+  <!-- to force server logging libs in webapp use below (will use server config too!) -->
+  <!--
+  <Get name="systemClasspathPattern">
+    <Call name="add"><Arg>org.slf4j.</Arg></Call>
+    <Call name="add"><Arg>org.apache.logging.</Arg></Call>
+  </Get>
+   -->
 </Configure>
