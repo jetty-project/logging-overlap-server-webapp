@@ -4,4 +4,15 @@
   <Set name="contextPath">/</Set>
   <Set name="war"><Property name="jetty.webapps" />/root.war
   </Set>
+  <Get name="serverClasspathPattern">
+    <Call name="add">
+      <Arg>org.slf4j.</Arg>
+    </Call>
+    <Call name="add">
+      <Arg>org.apache.logging.slf4j.</Arg>
+    </Call>
+    <Call name="add">
+      <Arg>org.apache.logging.log4j.</Arg>
+    </Call>
+  </Get>
 </Configure>
