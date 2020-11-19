@@ -87,7 +87,7 @@ what logging implementation that slf4j writes its events to.
 In the above warning what happened is ...
 
 * the `root.war` is being deployed
-* the `org.eclipse.jetty.demo.DemoServlet.init()` is called to initialize the servlet
+* the `org.eclipse.jetty.demos.DemoServlet.init()` is called to initialize the servlet
 * the slf4j implementation looks for the class `org.slf4j.impl.StaticLoggerBinder.class`
  and finds two copies.
   * The one in the webapps `WEB-INF/lib/log4j-slf4j-impl-2.6.2.jar`
