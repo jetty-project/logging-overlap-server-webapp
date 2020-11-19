@@ -16,7 +16,7 @@
 //  ========================================================================
 //
 
-package org.eclipse.jetty.demo;
+package org.eclipse.jetty.demos;
 
 import java.io.IOException;
 import javax.servlet.DispatcherType;

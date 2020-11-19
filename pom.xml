@@ -3,10 +3,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.eclipse.jetty.demo</groupId>
-  <artifactId>logging-webapp</artifactId>
+  <groupId>org.eclipse.jetty.demos</groupId>
+  <artifactId>logging-overlap-demo-parent</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging>
+  <packaging>pom</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,35 +24,29 @@
     <maven.deploy.plugin.version>3.0.0-M1</maven.deploy.plugin.version>
     <license.plugin.version>3.0</license.plugin.version>
 
-    <log4j.version>2.14.0</log4j.version>
+    <servlet.version>3.1.0</servlet.version>
   </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-slf4j-impl</artifactId>
-      <version>${log4j.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
-      <version>${log4j.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-web</artifactId>
-      <version>${log4j.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>3.1.0</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
+  <modules>
+    <module>logging-webapp</module>
+    <module>lib-using-commonslogging</module>
+    <module>lib-using-javautillogging</module>
+    <module>lib-using-slf4j</module>
+    <module>demobase</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>${servlet.version}</version>
+        <scope>provided</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <build>
-    <finalName>demo</finalName>
     <pluginManagement>
       <plugins>
         <plugin>
@@ -129,25 +123,6 @@
             <goals>
               <goal>jar</goal>
             </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <version>3.0.0</version>
-        <executions>
-          <execution>
-            <id>copy-to-webapps</id>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <phase>install</phase>
-            <configuration>
-              <target>
-                <copy file="${project.build.directory}/${project.build.finalName}.war" tofile="${project.basedir}/webapps/root.war" />
-              </target>
-            </configuration>
           </execution>
         </executions>
       </plugin>

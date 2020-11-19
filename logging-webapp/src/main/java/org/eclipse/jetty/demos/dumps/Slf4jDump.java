@@ -16,19 +16,25 @@
 //  ========================================================================
 //
 
-package org.eclipse.jetty.demo;
+package org.eclipse.jetty.demos.dumps;
 
-import java.nio.charset.UnsupportedCharsetException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 
-public class NaughtyServlet extends HttpServlet
+import org.slf4j.ILoggerFactory;
+import org.slf4j.Logger;
+
+import static org.eclipse.jetty.demos.Util.toDebugString;
+import static org.slf4j.LoggerFactory.getILoggerFactory;
+import static org.slf4j.LoggerFactory.getLogger;
+
+public class Slf4jDump
 {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    public static void dump(PrintWriter out) throws IOException
     {
-        // Intentionally cause an error 500.
-        throw new UnsupportedCharsetException("BAD");
+        ILoggerFactory loggerFactory = getILoggerFactory();
+        out.printf("  slf4j ILoggerFactory: %s%n", toDebugString(loggerFactory));
+        Logger rootLogger = getLogger("");
+        out.printf("  slf4j root Logger: %s%n", toDebugString(rootLogger));
     }
 }

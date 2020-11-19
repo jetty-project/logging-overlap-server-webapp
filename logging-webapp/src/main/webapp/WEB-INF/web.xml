@@ -3,18 +3,23 @@
 
   <servlet>
     <servlet-name>demo</servlet-name>
-    <servlet-class>org.eclipse.jetty.demo.DemoServlet</servlet-class>
+    <servlet-class>org.eclipse.jetty.demos.DemoServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
 
   <servlet>
     <servlet-name>naughty</servlet-name>
-    <servlet-class>org.eclipse.jetty.demo.NaughtyServlet</servlet-class>
+    <servlet-class>org.eclipse.jetty.demos.NaughtyServlet</servlet-class>
   </servlet>
 
   <servlet>
     <servlet-name>error</servlet-name>
-    <servlet-class>org.eclipse.jetty.demo.ErrorServlet</servlet-class>
+    <servlet-class>org.eclipse.jetty.demos.ErrorServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>logging-status</servlet-name>
+    <servlet-class>org.eclipse.jetty.demos.LoggingStatusServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
@@ -30,6 +35,11 @@
   <servlet-mapping>
     <servlet-name>error</servlet-name>
     <url-pattern>/error</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>logging-status</servlet-name>
+    <url-pattern>/status/*</url-pattern>
   </servlet-mapping>
 
   <!-- specific usage of sendError(500) -->

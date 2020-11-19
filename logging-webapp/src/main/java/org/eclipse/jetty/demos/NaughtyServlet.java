@@ -16,38 +16,19 @@
 //  ========================================================================
 //
 
-package org.eclipse.jetty.demo;
+package org.eclipse.jetty.demos;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
+import java.nio.charset.UnsupportedCharsetException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class DemoServlet extends HttpServlet
+public class NaughtyServlet extends HttpServlet
 {
-    private static final Logger LOG = LoggerFactory.getLogger(DemoServlet.class);
-
     @Override
-    public void init() throws ServletException
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
     {
-        super.init();
-        LOG.info("Initializing the WebApp");
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException
-    {
-        LOG.info("This is from the DemoServlet.doGet()");
-        resp.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/plain");
-
-        PrintWriter out = resp.getWriter();
-        out.println("in doGet()");
-        out.printf("The logger is a %s%n", LOG.getClass().getName());
+        // Intentionally cause an error 500.
+        throw new UnsupportedCharsetException("BAD");
     }
 }
