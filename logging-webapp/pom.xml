@@ -27,11 +27,13 @@
       <artifactId>log4j-core</artifactId>
       <version>${log4j.version}</version>
     </dependency>
+    <!-- Enable to have Log4j automatically bind to the ServletContext via a ServletContextInitializer
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-web</artifactId>
       <version>${log4j.version}</version>
     </dependency>
+     -->
     <dependency>
       <groupId>org.eclipse.jetty.demos</groupId>
       <artifactId>lib-using-commonslogging</artifactId>
