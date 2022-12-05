@@ -13,7 +13,7 @@
   <packaging>pom</packaging>
 
   <properties>
-    <dependency.plugin.version>3.3.0</dependency.plugin.version>
+    <dependency.plugin.version>3.4.0</dependency.plugin.version>
   </properties>
 
   <dependencies>
