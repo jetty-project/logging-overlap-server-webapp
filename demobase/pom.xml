@@ -32,7 +32,7 @@
     <dependency>
       <groupId>com.weicoder</groupId>
       <artifactId>disruptor</artifactId>
-      <version>3.5.7</version>
+      <version>3.5.8</version>
     </dependency>
     <!-- The API for Slf4J -->
     <dependency>
